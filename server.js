@@ -1,9 +1,13 @@
 const http = require('http')
 const fs = require('fs')
 const path = require('path')
+const url = require('url')
 
 const hostname = '127.0.0.1'
 const port = 3000
+
+const ROOT_PATH = path.dirname(require.main.filename)
+const MODULE_PATH = require.resolve('conssert')
 
 function collectFilePaths(dirPath) {
   return (
@@ -11,13 +15,14 @@ function collectFilePaths(dirPath) {
       .reduce((collected, child) => {
         const childPath = path.join(dirPath, child)
 
-        const childIsDirectory = fs.lstatSync(childPath).isDirectory()
-        const childIsTestFile = child.endsWith('.test.js')
+        const isDirectory = fs.lstatSync(childPath).isDirectory()
+        const isTestFile = child.endsWith('.test.js')
+        const isNodeModules = child.includes('node_modules')
 
-        if (!(childIsDirectory || childIsTestFile)) return collected
+        if (!(isDirectory || isTestFile) || isNodeModules) return collected
 
         return collected.concat(
-          childIsDirectory
+          isDirectory
             ? collectFilePaths(childPath)
             : [childPath]
         )
@@ -26,8 +31,8 @@ function collectFilePaths(dirPath) {
 }
 
 function buildHtml() {
-  const testPaths = collectFilePaths('.')
-  const sciptTags = testPaths.map(testPath => (
+  const testPaths = collectFilePaths(ROOT_PATH)
+  const testFiles = testPaths.map(testPath => (
     `<script type='module' src='${testPath}'></script>`
   )).join('')
 
@@ -40,9 +45,9 @@ function buildHtml() {
           <title>Conssert Browser Testing</title>
         </head>
         <body>
-          <script type='module' src='src/index.js'></script>
+          <script type='module' src=`${MODULE_PATH}/src/index.js`></script>
           ${testFiles}
-          <script type='module' src="src/runner.js"></script>
+          <script type='module' src=`${MODULE_PATH}/src/runner.js`></script>
         </body>
       </html>
     `
@@ -50,8 +55,12 @@ function buildHtml() {
 }
 
 const server = http.createServer((req, res) => {
+  console.log(`${req.method} ${req.url}`)
+
   if (req.url === '/') {
-    return res.writeHead(200, {'Content-type': 'text/html'}).end(buildHtml)
+    res.writeHead(200, {'Content-type': 'text/html'})
+    res.end(buildHtml('.'))
+    return
   }
 
   const parsedUrl = url.parse(req.url)
@@ -74,16 +83,14 @@ const server = http.createServer((req, res) => {
     !fs.statSync(pathname).isDirectory()
   )
 
-  return (
-    fileExists
-      ? (
-        res
-          .writeHead(200, {'Content-type': mimeMap[ext] || 'text/plain'})
-          .end(fs.readFileSync(pathname))
-      ) : (
-        res.writeHead(404).end(`File ${pathname} not found!`)
-      )
-  )
+  if (fileExists) {
+    res.writeHead(200, {'Content-type': mimeMap[ext] || 'text/plain'})
+    res.end(fs.readFileSync(pathname))
+    return
+  } else {
+    res.writeHead(404)
+    res.end(`File ${pathname} not found!`)
+  }
 })
 
 server.listen(port, hostname, () => {

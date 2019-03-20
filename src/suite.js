@@ -38,3 +38,5 @@ export default class Suite {
     return this
   }
 }
+
+window.Suite = Suite
