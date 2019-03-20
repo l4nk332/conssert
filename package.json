@@ -1,6 +1,6 @@
 {
   "name": "conssert",
-  "version": "19.3.0",
+  "version": "19.3.1",
   "description": "An assertion library for modern browser consoles.",
   "main": "server.js",
   "scripts": {
