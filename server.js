@@ -6,8 +6,9 @@ const url = require('url')
 const hostname = '127.0.0.1'
 const port = 3000
 
-const ROOT_PATH = path.dirname(require.main.filename)
-const MODULE_PATH = require.resolve('conssert')
+const CURRENT_PATH = '.'
+// TODO: Use this to resolve node_module path
+const MODULE_PATH = path.dirname(require.resolve('conssert'))
 
 function collectFilePaths(dirPath) {
   return (
@@ -31,7 +32,7 @@ function collectFilePaths(dirPath) {
 }
 
 function buildHtml() {
-  const testPaths = collectFilePaths(ROOT_PATH)
+  const testPaths = collectFilePaths(CURRENT_PATH)
   const testFiles = testPaths.map(testPath => (
     `<script type='module' src='${testPath}'></script>`
   )).join('')
@@ -45,9 +46,9 @@ function buildHtml() {
           <title>Conssert Browser Testing</title>
         </head>
         <body>
-          <script type='module' src=`${MODULE_PATH}/src/index.js`></script>
+          <script type='module' src='./node_modules/conssert/src/index.js'></script>
           ${testFiles}
-          <script type='module' src=`${MODULE_PATH}/src/runner.js`></script>
+          <script type='module' src='./node_modules/conssert/src/runner.js'></script>
         </body>
       </html>
     `

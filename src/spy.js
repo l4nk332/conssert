@@ -9,3 +9,4 @@ export default class Spy {
   }
 }
 
+window.Spy = Spy
