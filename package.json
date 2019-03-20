@@ -1,0 +1,27 @@
+{
+  "name": "conssert",
+  "version": "19.3.0",
+  "description": "An assertion library for modern browser consoles.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/l4nk332/conssert.git"
+  },
+  "keywords": [
+    "testing",
+    "browser",
+    "javascript",
+    "console",
+    "assert"
+  ],
+  "author": "Ian Jabour",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/l4nk332/conssert/issues"
+  },
+  "homepage": "https://github.com/l4nk332/conssert#readme"
+}
