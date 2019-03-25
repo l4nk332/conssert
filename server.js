@@ -3,6 +3,8 @@ const fs = require('fs')
 const path = require('path')
 const url = require('url')
 
+const { portBanner } = require('./console_utils.js')
+
 const hostname = '127.0.0.1'
 const port = 3000
 
@@ -56,8 +58,6 @@ function buildHtml() {
 }
 
 const server = http.createServer((req, res) => {
-  console.log(`${req.method} ${req.url}`)
-
   if (req.url === '/') {
     res.writeHead(200, {'Content-type': 'text/html'})
     res.end(buildHtml('.'))
@@ -85,6 +85,9 @@ const server = http.createServer((req, res) => {
   )
 
   if (fileExists) {
+    if (pathname.endsWith('.test.js')) {
+      console.log(`Found Test File: ${pathname}`)
+    }
     res.writeHead(200, {'Content-type': mimeMap[ext] || 'text/plain'})
     res.end(fs.readFileSync(pathname))
     return
@@ -94,6 +97,8 @@ const server = http.createServer((req, res) => {
   }
 })
 
+
+
 server.listen(port, hostname, () => {
-  console.log(`Server running on port: ${port}`)
+  console.log(portBanner(port))
 })
