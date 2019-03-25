@@ -3,64 +3,21 @@ const fs = require('fs')
 const path = require('path')
 const url = require('url')
 
-const { portBanner } = require('./console_utils.js')
+const { portBanner, blue, red } = require('./console_utils.js')
+const { buildHtml } = require('./response_utils.js')
 
 const hostname = '127.0.0.1'
 const port = 3000
 
 const CURRENT_PATH = '.'
 // TODO: Use this to resolve node_module path
-const MODULE_PATH = path.dirname(require.resolve('conssert'))
-
-function collectFilePaths(dirPath) {
-  return (
-    fs.readdirSync(dirPath)
-      .reduce((collected, child) => {
-        const childPath = path.join(dirPath, child)
-
-        const isDirectory = fs.lstatSync(childPath).isDirectory()
-        const isTestFile = child.endsWith('.test.js')
-        const isNodeModules = child.includes('node_modules')
-
-        if (!(isDirectory || isTestFile) || isNodeModules) return collected
-
-        return collected.concat(
-          isDirectory
-            ? collectFilePaths(childPath)
-            : [childPath]
-        )
-      }, [])
-  )
-}
-
-function buildHtml() {
-  const testPaths = collectFilePaths(CURRENT_PATH)
-  const testFiles = testPaths.map(testPath => (
-    `<script type='module' src='${testPath}'></script>`
-  )).join('')
-
-  return (
-    `
-      <!DOCTYPE html>
-      <html lang="en">
-        <head>
-          <meta charset="UTF-8">
-          <title>Conssert Browser Testing</title>
-        </head>
-        <body>
-          <script type='module' src='./node_modules/conssert/src/index.js'></script>
-          ${testFiles}
-          <script type='module' src='./node_modules/conssert/src/runner.js'></script>
-        </body>
-      </html>
-    `
-  )
-}
+// const MODULE_PATH = path.dirname(require.resolve('conssert'))
+const MODULE_PATH = '.'
 
 const server = http.createServer((req, res) => {
   if (req.url === '/') {
     res.writeHead(200, {'Content-type': 'text/html'})
-    res.end(buildHtml('.'))
+    res.end(buildHtml(CURRENT_PATH))
     return
   }
 
@@ -85,13 +42,13 @@ const server = http.createServer((req, res) => {
   )
 
   if (fileExists) {
-    if (pathname.endsWith('.test.js')) {
-      console.log(`Found Test File: ${pathname}`)
-    }
+    console.log(pathname.endsWith('.test.js') ? blue(pathname) : pathname)
+
     res.writeHead(200, {'Content-type': mimeMap[ext] || 'text/plain'})
     res.end(fs.readFileSync(pathname))
     return
   } else {
+    console.log(`File Not Found: ${red(pathname)}`)
     res.writeHead(404)
     res.end(`File ${pathname} not found!`)
   }

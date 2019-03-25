@@ -50,5 +50,5 @@ function portBanner(port) {
 module.exports = {
   constructBanner,
   portBanner,
-  COLOR
+  ...COLOR
 }
