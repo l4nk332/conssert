@@ -14,6 +14,30 @@ export default function assert(logger, lhs) {
         })
       }
     },
+    toBeTrue() {
+      const result = negateIf(this._negated, lhs === true)
+
+      this.logFailures({
+        result,
+        expected: true,
+        received: lhs,
+        message:  `Expected true but received ${lhs}`
+      })
+
+      return result
+    },
+    toBeFalse() {
+      const result = negateIf(this._negated, lhs === false)
+
+      this.logFailures({
+        result,
+        expected: false,
+        received: lhs,
+        message:  `Expected false but received ${lhs}`
+      })
+
+      return result
+    },
     equalTo(rhs) {
       const result = negateIf(this._negated, deepEquals(lhs, rhs))
 
