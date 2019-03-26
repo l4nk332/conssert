@@ -1,6 +1,6 @@
 const { collectFilePaths } = require('./fs_utils.js')
 
-function buildHtml(currentPath) {
+function buildHtml(currentPath, modulePath) {
   const testPaths = collectFilePaths(currentPath)
   const testFiles = testPaths.map(testPath => (
     `<script type='module' src='${testPath}'></script>`
@@ -15,9 +15,9 @@ function buildHtml(currentPath) {
           <title>Conssert Browser Testing</title>
         </head>
         <body>
-          <script type='module' src='./node_modules/conssert/src/index.js'></script>
+          <script type='module' src='${modulePath}/src/index.js'></script>
           ${testFiles}
-          <script type='module' src='./node_modules/conssert/src/runner.js'></script>
+          <script type='module' src='${modulePath}/src/runner.js'></script>
         </body>
       </html>
     `

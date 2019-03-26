@@ -3,21 +3,27 @@ const fs = require('fs')
 const path = require('path')
 const url = require('url')
 
+const parseArgs = require('./argument_parser.js')
 const { portBanner, blue, red } = require('./console_utils.js')
 const { buildHtml } = require('./response_utils.js')
 
+const ARGS = parseArgs(process.argv)
+
 const hostname = '127.0.0.1'
-const port = 3000
+const port = ARGS.PORT || 3000
+
+const LOCAL_DEV = ARGS.LOCAL_DEV
+
+if (LOCAL_DEV) console.log('\nRunning in local development mode...\n')
 
 const CURRENT_PATH = '.'
 // TODO: Use this to resolve node_module path
-// const MODULE_PATH = path.dirname(require.resolve('conssert'))
-const MODULE_PATH = '.'
+const MODULE_PATH = LOCAL_DEV ? '.' : path.dirname(require.resolve('conssert'))
 
 const server = http.createServer((req, res) => {
   if (req.url === '/') {
     res.writeHead(200, {'Content-type': 'text/html'})
-    res.end(buildHtml(CURRENT_PATH))
+    res.end(buildHtml(CURRENT_PATH, MODULE_PATH))
     return
   }
 
