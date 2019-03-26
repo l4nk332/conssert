@@ -17,7 +17,6 @@ const LOCAL_DEV = ARGS.LOCAL_DEV
 if (LOCAL_DEV) console.log('\nRunning in local development mode...\n')
 
 const CURRENT_PATH = '.'
-// TODO: Use this to resolve node_module path
 const MODULE_PATH = LOCAL_DEV ? '.' : path.dirname(require.resolve('conssert'))
 
 const server = http.createServer((req, res) => {
