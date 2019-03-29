@@ -4,6 +4,7 @@ const path = require('path')
 const url = require('url')
 
 const parseArgs = require('./argument_parser.js')
+const { isIgnoredPath } = require('./path_utils.js')
 const { portBanner, blue, red } = require('./console_utils.js')
 const { buildHtml } = require('./response_utils.js')
 
@@ -28,8 +29,10 @@ const server = http.createServer((req, res) => {
 
   const parsedUrl = url.parse(req.url)
   const pathname = `.${parsedUrl.pathname}`
-  const ext = path.parse(pathname).ext
 
+  if (ARGS.IGNORE && isIgnoredPath(ARGS.IGNORE, pathname)) return
+
+  const ext = path.parse(pathname).ext
   const mimeMap = {
     '.ico': 'image/x-icon',
     '.html': 'text/html',
