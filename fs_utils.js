@@ -1,7 +1,8 @@
 const fs = require('fs')
 const path = require('path')
 
-function collectFilePaths(dirPath) {
+function collectFilePaths(dirPath, shouldIgnore) {
+  shouldIgnore = shouldIgnore || a => false
   return (
     fs.readdirSync(dirPath)
       .reduce((collected, child) => {
@@ -10,12 +11,15 @@ function collectFilePaths(dirPath) {
         const isDirectory = fs.lstatSync(childPath).isDirectory()
         const isTestFile = child.endsWith('.test.js')
         const isNodeModules = child.includes('node_modules')
+        const isIgnoredPath = shouldIgnore(childPath)
 
-        if (!(isDirectory || isTestFile) || isNodeModules) return collected
+        if (!(isDirectory || isTestFile) || isNodeModules || isIgnoredPath) {
+          return collected
+        }
 
         return collected.concat(
           isDirectory
-            ? collectFilePaths(childPath)
+            ? collectFilePaths(childPath, shouldIgnore)
             : [childPath]
         )
       }, [])

@@ -4,8 +4,9 @@ const path = require('path')
 const url = require('url')
 
 const parseArgs = require('./argument_parser.js')
-const { isIgnoredPath } = require('./path_utils.js')
+const { isIgnoredPath, toRegexes } = require('./ignore_utils.js')
 const { portBanner, blue, red } = require('./console_utils.js')
+const { partial } = require('./func_utils.js')
 const { buildHtml } = require('./response_utils.js')
 
 const ARGS = parseArgs(process.argv)
@@ -17,20 +18,21 @@ const LOCAL_DEV = ARGS.LOCAL_DEV
 
 if (LOCAL_DEV) console.log('\nRunning in local development mode...\n')
 
+const IGNORE_REGEXES = ARGS.IGNORE ? toRegexes(ARGS.IGNORE) : []
+const shouldIgnore = partial(isIgnoredPath, IGNORE_REGEXES)
+
 const CURRENT_PATH = '.'
 const MODULE_PATH = LOCAL_DEV ? '.' : path.dirname(require.resolve('conssert'))
 
 const server = http.createServer((req, res) => {
   if (req.url === '/') {
     res.writeHead(200, {'Content-type': 'text/html'})
-    res.end(buildHtml(CURRENT_PATH, MODULE_PATH))
+    res.end(buildHtml(CURRENT_PATH, MODULE_PATH, shouldIgnore))
     return
   }
 
   const parsedUrl = url.parse(req.url)
   const pathname = `.${parsedUrl.pathname}`
-
-  if (ARGS.IGNORE && isIgnoredPath(ARGS.IGNORE, pathname)) return
 
   const ext = path.parse(pathname).ext
   const mimeMap = {

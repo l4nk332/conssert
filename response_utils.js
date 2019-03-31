@@ -1,7 +1,7 @@
 const { collectFilePaths } = require('./fs_utils.js')
 
-function buildHtml(currentPath, modulePath) {
-  const testPaths = collectFilePaths(currentPath)
+function buildHtml(currentPath, modulePath, shouldIgnore) {
+  const testPaths = collectFilePaths(currentPath, shouldIgnore)
   const testFiles = testPaths.map(testPath => (
     `<script type='module' src='${testPath}'></script>`
   )).join('')
