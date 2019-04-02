@@ -5,11 +5,22 @@ const url = require('url')
 
 const parseArgs = require('./argument_parser.js')
 const { isIgnoredPath, toRegexes } = require('./ignore_utils.js')
-const { portBanner, blue, red } = require('./console_utils.js')
+const {
+  portBanner,
+  helpOptions,
+  logAndExit,
+  packageVersion,
+  blue,
+  red
+} = require('./console_utils.js')
 const { partial } = require('./func_utils.js')
 const { buildHtml } = require('./response_utils.js')
 
 const ARGS = parseArgs(process.argv)
+
+if (ARGS.HELP) logAndExit(helpOptions())
+
+if (ARGS.VERSION) logAndExit(packageVersion())
 
 const hostname = '127.0.0.1'
 const port = ARGS.PORT || 3000
@@ -52,7 +63,9 @@ const server = http.createServer((req, res) => {
   )
 
   if (fileExists) {
-    console.log(pathname.endsWith('.test.js') ? blue(pathname) : pathname)
+    if (!ARGS.QUIET) {
+      console.log(pathname.endsWith('.test.js') ? blue(pathname) : pathname)
+    }
 
     res.writeHead(200, {'Content-type': mimeMap[ext] || 'text/plain'})
     res.end(fs.readFileSync(pathname))

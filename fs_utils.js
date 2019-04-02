@@ -1,8 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-function collectFilePaths(dirPath, shouldIgnore) {
-  shouldIgnore = shouldIgnore || a => false
+function collectFilePaths(dirPath, shouldIgnore = () => false) {
   return (
     fs.readdirSync(dirPath)
       .reduce((collected, child) => {

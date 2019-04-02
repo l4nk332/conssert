@@ -7,7 +7,9 @@ function parseArgs(rawArgs) {
     LOCAL_DEV: {name: 'LOCAL_DEV'},
     PORT: {name: 'PORT', singleValue: true},
     IGNORE: {name: 'IGNORE', multiValue: true},
-    HELP: {name: 'HELP'}
+    HELP: {name: 'HELP'},
+    VERSION: {name: 'VERSION'},
+    QUIET: {name: 'QUIET'}
   }
 
   const ARG_LOOKUP = {
@@ -18,7 +20,11 @@ function parseArgs(rawArgs) {
     '--ignore': ARG_MAP.IGNORE,
     '-i': ARG_MAP.IGNORE,
     '--help': ARG_MAP.HELP,
-    '-h': ARG_MAP.HELP
+    '-h': ARG_MAP.HELP,
+    '--version': ARG_MAP.VERSION,
+    '-v': ARG_MAP.VERSION,
+    '--quiet': ARG_MAP.QUIET,
+    '-q': ARG_MAP.QUIET,
   }
 
   return [...rawArgs].reduce((collected, rawArg) => {

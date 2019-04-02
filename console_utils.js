@@ -47,8 +47,48 @@ function portBanner(port) {
   return banner
 }
 
+function helpOptions() {
+  const HELP = `
+conssert [options]
+
+  -h, --help         Will print out this message and list out
+                     CLI options available.
+
+  -i, --ignore       JS structured regex to ignore.
+                     Multiple can be set by separating with a space.
+                     Use single quotes to prevent shell expansion.
+
+  -l, --local-dev    Allows for local development of conssert
+                     by properly configuring directory
+
+                     paths - default: false
+  -p, --port         Port conssert will run on and server
+                     files from - default: 3000
+
+  -q, --quiet        Report errors only rather than standard output
+                     of tests and assets being served. - default: false
+
+  -v, --version      Output the version number of conssert being used.
+`.trim()
+
+  return `\n${HELP}\n`
+}
+
+function logAndExit(msg) {
+  console.log(msg)
+  process.exit()
+}
+
+function packageVersion() {
+  const packageJson = require('./package.json')
+  return `v${packageJson.version}`
+}
+
 module.exports = {
   constructBanner,
   portBanner,
+  helpOptions,
+  logAndExit,
+  packageVersion,
   ...COLOR
 }
