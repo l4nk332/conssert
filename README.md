@@ -72,7 +72,7 @@ Each test case should first include a description of the test itself
 followed by the function which, provided with an `assert` function,
 will do any assetions necessary.
 
-> You can find more detailed documentation around the assetion methods
+> You can find more detailed documentation around the assertion methods
   available and other testing interfaces below.
 
 ## Usage: Running the Test Harness
