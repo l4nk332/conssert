@@ -14,7 +14,7 @@ export default function assert(logger, lhs) {
         })
       }
     },
-    toBeTrue() {
+    isTrue() {
       const result = negateIf(this._negated, lhs === true)
 
       this.logFailures({
@@ -26,7 +26,7 @@ export default function assert(logger, lhs) {
 
       return result
     },
-    toBeFalse() {
+    isFalse() {
       const result = negateIf(this._negated, lhs === false)
 
       this.logFailures({
