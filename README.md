@@ -148,31 +148,31 @@ new Suite('TestSuiteName')
   .tests([
     ['isTrue / isFalse Test Case', assert => {
       assert(true).isTrue()
-      assert(true).not().isFalse()
+      assert(true).not.isFalse()
 
-      assert(false).not().isFalse()
-      assert(false).not().isTrue()
+      assert(false).not.isFalse()
+      assert(false).not.isTrue()
     }],
     ['equalTo Test Case', assert => {
       assert('abc').equalTo('abc')
-      assert('abc').not().equalTo('ABC')
+      assert('abc').not.equalTo('ABC')
 
       assert([1, 2]).equalTo([1, 2])
-      assert([1, 2]).not().equalTo([2, 1])
+      assert([1, 2]).not.equalTo([2, 1])
 
       assert({x: 1, y: {z: 2}}).equalTo({x: 1, y: {z: 2}})
-      assert({x: 1, y: {z: 2}}).not().equalTo({x: 1, y: 2})
+      assert({x: 1, y: {z: 2}}).not.equalTo({x: 1, y: 2})
     }],
     ['sameAs Test Case', assert => {
       const x = [1, 2, 3]
       assert(x).sameAs(x)
-      assert(x).not().sameAs([1, 2, 3])
+      assert(x).not.sameAs([1, 2, 3])
     }],
     ['instanceOf Test Case', assert => {
       function A() {}
       assert(new A()).instanceOf(A)
       function B() {}
-      assert(new A()).not().instanceOf(B)
+      assert(new A()).not.instanceOf(B)
     }]
   ])
   .afterEach(fn)
@@ -193,4 +193,4 @@ Snippet | Description
 `assert(v).equalTo(z)` | Behaves as a deep equal comparison for primitive and objects alike. In this case we are asserting `v` is equal to `z`.
 `assert(v).sameAs(z)` | Should be used for reference types when one wants to assert that two objects share the same reference. In this case we are asserting that `v` and `z` both share the same reference.
 `assert(v).instanceOf(z)` | Will assert that `v` is an instance of `z`
-`assert(v).not().equalTo(z)` | Usage of `not()` will negate the set assertion, essentially flipping the logic. It can prefix any of the other assetion methods listed above. In this case we are asserting `v` is not equal to `z`.
+`assert(v).not.equalTo(z)` | Usage of `not` will negate the set assertion, essentially flipping the logic. It can prefix any of the other assetion methods listed above. In this case we are asserting `v` is not equal to `z`.

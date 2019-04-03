@@ -74,7 +74,7 @@ export default function assert(logger, lhs) {
 
       return result
     },
-    not() {
+    get not() {
       this._negated = !this._negated
       return this
     }
