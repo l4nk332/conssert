@@ -12,6 +12,8 @@ Conssert aims to:
   needing to transpile for testing (as with node-based testing frameworks).
 - Make setting up a testing environment as simple and painless as
   possible with **zero configuration necessary**.
+  
+> **Conssert is not suited for projects that are transpiled due to its utilization of the [native ES Module standard](https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/) found in the browser.**
 
 ## Installation
 
