@@ -69,6 +69,11 @@ conssert [options]
                      of tests and assets being served. - default: false
 
   -v, --version      Output the version number of conssert being used.
+
+  -w, --watch        Will automatically re-run tests when file
+                     modifications are detected. If --ignore option is
+                     used, the files matching given pattern(s) will not
+                     be watched.
 `.trim()
 
   return `\n${HELP}\n`
