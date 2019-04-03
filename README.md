@@ -118,10 +118,10 @@ conssert [options]
                      Use single quotes to prevent shell expansion.
 
   -l, --local-dev    Allows for local development of conssert
-                     by properly configuring directory
+                     by properly configuring directory.
 
-  -p, --port         Port conssert will run on and server
-                     files from - default: 3000
+  -p, --port         Port conssert will run on and serve
+                     files from. - default: 3000
 
   -q, --quiet        Report errors only rather than standard output
                      of tests and assets being served. - default: false
