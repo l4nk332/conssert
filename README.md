@@ -1,8 +1,8 @@
 # Conssert
 
-![Conssert Logo](img/conssert_logo.png)
+A **zero-config** testing framework that runs in your browser.
 
-A zero-config testing framework that runs in your browser.
+<p align='center'><img src='img/conssert_logo.png' alt='Conssert Logo' /></p>
 
 Conssert aims to:
 
