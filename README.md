@@ -1,6 +1,6 @@
 # Conssert
 
-[placeholder image of logo]()
+[Conssert Logo]('./img/conssert_logo.png')
 
 A zero-config testing framework that runs in your browser.
 
