@@ -120,7 +120,6 @@ conssert [options]
   -l, --local-dev    Allows for local development of conssert
                      by properly configuring directory
 
-                     paths - default: false
   -p, --port         Port conssert will run on and server
                      files from - default: 3000
 
