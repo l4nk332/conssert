@@ -136,6 +136,9 @@ conssert [options]
                      be watched.
 ```
 
+> If you wish to run conssert on a sub-directory of your project you
+  simply `cd` into that directory and run `conssert` from there.
+
 ## Conssert API Examples
 
 Below you can find an example usage of the API provided by conssert
