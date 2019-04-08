@@ -1,0 +1,139 @@
+/* Variables */
+/* ========= */
+:root {
+  /* Border-Radius */
+  --rad-0: 0px;
+  --rad-100: 1px;
+  --rad-200: 2px;
+  --rad-circle: 100%;
+
+  /* Border-Width */
+  --bw-0: 0px;
+  --bw-100: 1px;
+  --bw-200: 2px;
+  --bw-300: 4px;
+  --bw-400: 8px;
+
+  /* Colors */
+  --white: #fff;
+  --black: #22292f;
+
+  --grey-100: #f8fafc;
+  --grey-200: #F1F5F8;
+  --grey-300: #DAE1E7;
+  --grey-400: #B8C2CC;
+  --grey-500: #8795A1;
+  --grey-600: #606F7B;
+  --grey-700: #3D4852;
+
+  --green-100: #E3FCEC;
+  --green-200: #A2F5BF;
+  --green-300: #51D88A;
+  --green-400: #38C172;
+  --green-500: #1F9D55;
+  --green-600: #1A4731;
+  --green-700: #0F2F21;
+
+  --red-100: #FCEBEA;
+  --red-200: #F9ACAA;
+  --red-300: #EF5753;
+  --red-400: #E3342F;
+  --red-500: #CC1F1A;
+  --red-600: #621B18;
+  --red-700: #3B0D0C;
+
+  --accent-100: #E6E8FF;
+  --accent-200: #B2B7FF;
+  --accent-300: #7886D7;
+  --accent-400: #6574CD;
+  --accent-500: #5661B3;
+  --accent-600: #2F365F;
+  --accent-700: #191E38;
+
+  /* Line-Height */
+  --lh-none: 1;
+  --lh-tight: 1.25;
+  --lh-normal: 1.5;
+  --lh-loose: 2;
+
+  /* Sizing / Spacing */
+  --sp-100: 4px;
+  --sp-200: 8px;
+  --sp-300: 12px;
+  --sp-400: 16px;
+  --sp-500: 24px;
+  --sp-600: 32px;
+  --sp-700: 48px;
+  --sp-800: 64px;
+  --sp-900: 96px;
+  --sp-1000: 128px;
+  --sp-1100: 192px;
+  --sp-1200: 256px;
+  --sp-1300: 384px;
+  --sp-1400: 512px;
+  --sp-1500: 640px;
+  --sp-1600: 768px;
+
+  /* Font-Size */
+  --fs-100: 12px;
+  --fs-200: 14px;
+  --fs-300: 16px;
+  --fs-400: 18px;
+  --fs-500: 20px;
+  --fs-600: 24px;
+  --fs-700: 30px;
+  --fs-800: 36px;
+  --fs-900: 48px;
+  --fs-1000: 60px;
+  --fs-1100: 72px;
+
+  /* Font-Weight */
+  --fw-hairline: 100;
+  --fw-thin: 200;
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+  --fw-black: 900;
+
+  /* Z-Index */
+  --z-neg: -1;
+  --z-0: 0;
+  --z-10: 10;
+  --z-20: 20;
+  --z-30: 30;
+  --z-40: 40;
+  --z-50: 50;
+  --z-auto: auto;
+
+  /* Font-Family */
+  --primary-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+
+/* Resets */
+/* ====== */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+
+/* Styles */
+/* ====== */
