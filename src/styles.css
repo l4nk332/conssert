@@ -140,6 +140,7 @@ ol, ul {
 /* ====== */
 
 body {
+  color: var(--black);
   padding: var(--sp-600);
 }
 
@@ -176,4 +177,52 @@ body {
   font-size: var(--fs-300);
   margin-bottom: var(--sp-100);
   margin-left: var(--sp-200);
+}
+
+.result {
+  margin: var(--sp-400) 0;
+  padding: var(--sp-300) var(--sp-500);
+  border-left: var(--bw-100) solid var(--grey-600);
+}
+
+.result:hover {
+  background-color: var(--grey-100);
+  border-color: var(--black);
+}
+
+.result:hover .diffCode {
+  background-color: var(--grey-200);
+}
+
+.result:hover .diffCode.expected {
+  color: var(--green-500);
+}
+
+.result:hover .diffCode.received {
+  color: var(--red-500);
+}
+
+.result:hover .failureLink {
+  color: var(--accent-400);
+}
+
+.suiteName {
+  font-weight: var(--fw-semibold);
+  margin-bottom: var(--sp-500);
+}
+
+.diff {
+  padding-left: var(--sp-500);
+  margin-bottom: var(--sp-600);
+}
+
+.diffText {
+  display: block;
+  margin-bottom: var(--sp-300);
+}
+
+.diffCode {
+  display: block;
+  padding: var(--sp-300) var(--sp-500);
+  background: #f5f5f5;
 }
