@@ -6,6 +6,40 @@
   <link rel='stylesheet' type='text/css' href='./styles.css' />
 </head>
 <body>
-
+  <section class="headlineContainer">
+    <h1 class="brandText">🥁Conssert Testing Framework 🎸</h1>
+    <span class="runningTotal"><strong>0</strong> out of <strong>15</strong> Test Suites Ran</span>
+  </section>
+  <section class="resultsContainer">
+    <section class="resultSet">
+      <header class="resultSetHeader">
+        <h2 class="summaryText"><strong class="summaryCount">3</strong> FAIL</h2>
+        <span class="testCount">(3 tests)</span>
+      </header>
+      <section class="resultSetContent">
+        <section class="result">
+          <h4 class="suiteName">constructMarkup</h4>
+          <p class="testDescription">Should return valid markup provided valid inputs.</p>
+          <section class="diff expected">
+            <span class="diffText">Expected:</span>
+            <code class="diffCode">
+              function hi() {
+                console.log('hi')
+              }
+            </code>
+          </section>
+          <section class="diff received">
+            <span class="diffText">Received:</span>
+            <code class="diffCode">
+              function ho() {
+                console.log('ho')
+              }
+            </code>
+          </section>
+          <p class='failureLocation'>Failure found in <strong>/conssert/helpers.js</strong> line 64.</p>
+        </section>
+      </section>
+    </section>
+  </section>
 </body>
 </html>

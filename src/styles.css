@@ -116,8 +116,9 @@
 /* Resets */
 /* ====== */
 html {
+  font-family: var(--primary-family);
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: var(--fs-300);
 }
 
 *, *:before, *:after {
@@ -137,3 +138,42 @@ ol, ul {
 
 /* Styles */
 /* ====== */
+
+body {
+  padding: var(--sp-600);
+}
+
+.headlineContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--fs-200);
+  margin-bottom: var(--sp-900);
+}
+
+.brandText {
+  font-size: inherit;
+}
+
+.resultsContainer {
+  max-width: var(--sp-1400);
+  margin: 0 auto;
+}
+
+.resultSetHeader {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.summaryText {
+  font-size: var(--fs-600);
+}
+
+.testCount {
+  font-size: var(--fs-300);
+  margin-bottom: var(--sp-100);
+  margin-left: var(--sp-200);
+}
