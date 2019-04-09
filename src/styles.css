@@ -162,6 +162,10 @@ body {
   margin: 0 auto;
 }
 
+.resultSet {
+  margin-bottom: var(--sp-200);
+}
+
 .resultSetHeader {
   display: flex;
   flex-flow: row nowrap;
