@@ -11,12 +11,49 @@
     <span class="runningTotal"><strong>0</strong> out of <strong>15</strong> Test Suites Ran</span>
   </section>
   <section class="resultsContainer">
-    <section class="resultSet">
+    <section class="resultSet pass">
       <header class="resultSetHeader">
-        <h2 class="summaryText"><strong class="summaryCount">3</strong> FAIL</h2>
+        <h2 class='summary'><strong class="summaryCount">13</strong> <span class='summaryText'>PASS</span></h2>
+        <span class="testCount">(53 tests)</span>
+      </header>
+    </section>
+    <section class="resultSet fail">
+      <header class="resultSetHeader">
+        <h2 class='summary'><strong class="summaryCount">3</strong> <span class='summaryText'>FAIL</span></h2>
         <span class="testCount">(3 tests)</span>
       </header>
       <section class="resultSetContent">
+        <!-- result 1 -->
+        <section class="result">
+          <h4 class="suiteName">coerceBoolean</h4>
+          <!-- <p class="testDescription">Should return valid markup provided valid inputs.</p> -->
+          <section class="diff">
+            <span class="diffText">Expected:</span>
+            <code class="diffCode expected">true</code>
+          </section>
+          <section class="diff">
+            <span class="diffText">Received:</span>
+            <code class="diffCode received">false</code>
+          </section>
+          <p class='failureLocation'>Failure found in <strong class='failureLink'>/conssert/helpers.js</strong> line 64.</p>
+        </section>
+        <!-- result 1 end -->
+        <!-- result 2 -->
+        <section class="result">
+          <h4 class="suiteName">findGreatestValue</h4>
+          <!-- <p class="testDescription">Should return valid markup provided valid inputs.</p> -->
+          <section class="diff">
+            <span class="diffText">Expected:</span>
+            <code class="diffCode expected">304</code>
+          </section>
+          <section class="diff">
+            <span class="diffText">Received:</span>
+            <code class="diffCode received">56</code>
+          </section>
+          <p class='failureLocation'>Failure found in <strong class='failureLink'>/conssert/helpers.js</strong> line 64.</p>
+        </section>
+        <!-- result 2 end -->
+        <!-- result 3 -->
         <section class="result">
           <h4 class="suiteName">constructMarkup</h4>
           <!-- <p class="testDescription">Should return valid markup provided valid inputs.</p> -->
@@ -38,6 +75,7 @@
           </section>
           <p class='failureLocation'>Failure found in <strong class='failureLink'>/conssert/helpers.js</strong> line 64.</p>
         </section>
+        <!-- result 3 end -->
       </section>
     </section>
   </section>

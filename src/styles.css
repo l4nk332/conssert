@@ -169,25 +169,56 @@ body {
   justify-content: flex-start;
 }
 
-.summaryText {
-  font-size: var(--fs-600);
+.summary {
+  font-size: var(--fs-700);
+}
+
+.summaryCount {
+  margin-right: var(--sp-200);
+}
+
+.pass .summaryCount {
+  color: var(--green-500);
+}
+
+.fail .summaryCount {
+  color: var(--red-500);
+}
+
+.pass .summaryText {
+  color: var(--green-500);
+}
+
+.fail .summaryText {
+  color: var(--red-400);
 }
 
 .testCount {
-  font-size: var(--fs-300);
+  font-size: var(--fs-400);
   margin-bottom: var(--sp-100);
   margin-left: var(--sp-200);
 }
 
+.pass .testCount {
+  color: var(--green-600);
+}
+
+.fail .testCount {
+  color: var(--red-600);
+}
+
 .result {
+  font-size: var(--fs-200);
   margin: var(--sp-400) 0;
   padding: var(--sp-300) var(--sp-500);
   border-left: var(--bw-100) solid var(--grey-600);
+  color: var(--grey-600);
 }
 
 .result:hover {
   background-color: var(--grey-100);
   border-color: var(--black);
+  color: var(--black);
 }
 
 .result:hover .diffCode {
@@ -208,12 +239,12 @@ body {
 
 .suiteName {
   font-weight: var(--fw-semibold);
-  margin-bottom: var(--sp-500);
+  margin-bottom: var(--sp-400);
 }
 
 .diff {
   padding-left: var(--sp-500);
-  margin-bottom: var(--sp-600);
+  margin-bottom: var(--sp-500);
 }
 
 .diffText {
@@ -229,4 +260,9 @@ body {
 
 .failureLocation {
   padding-left: var(--sp-500);
+}
+
+.failureLink {
+  color: var(--grey-500);
+  cursor: pointer;
 }
