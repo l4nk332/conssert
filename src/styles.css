@@ -145,8 +145,53 @@ ol, ul {
 /* Styles */
 /* ====== */
 
+body.light {
+  --text-color-body: var(--black);
+  --background-color-body: var(--white);
+  --text-color-summaryCount-pass: var(--green-500);
+  --text-color-summaryCount-fail: var(--red-500);
+  --text-color-summaryText-pass: var(--green-500);
+  --text-color-summaryText-fail: var(--red-400);
+  --text-color-testCount-pass: var(--green-600);
+  --text-color-testCount-fail: var(--red-600);
+  --border-color-result: var(--grey-400);
+  --text-color-result: var(--grey-600);
+  --text-color-result-hover: var(--black);
+  --background-color-result-hover: var(--grey-100);
+  --background-color-diffCode-hover: var(--grey-200);
+  --text-color-diffCode-expected-hover: var(--green-500);
+  --text-color-diffCode-received-hover: var(--red-500);
+  --text-color-failureLink-hover: var(--accent-400);
+  --text-color-suiteName-hover: inherit;
+  --background-color-diffCode: var(--grey-100);
+  --text-color-failureLink: var(--grey-500);
+}
+
+body.dark {
+  --text-color-body: var(--grey-400);
+  --background-color-body: var(--black);
+  --text-color-summaryCount-pass: var(--green-500);
+  --text-color-summaryCount-fail: var(--red-500);
+  --text-color-summaryText-pass: var(--green-500);
+  --text-color-summaryText-fail: var(--red-500);
+  --text-color-testCount-pass: var(--green-300);
+  --text-color-testCount-fail: var(--red-300);
+  --border-color-result: var(--grey-600);
+  --text-color-result: var(--grey-600);
+  --text-color-result-hover: var(--grey-400);
+  --background-color-result-hover: var(--grey-700);
+  --background-color-diffCode-hover: var(--black);
+  --text-color-diffCode-expected-hover: var(--green-500);
+  --text-color-diffCode-received-hover: var(--red-500);
+  --text-color-failureLink-hover: var(--accent-200);
+  --text-color-suiteName-hover: var(--grey-100);
+  --background-color-diffCode: transparent;
+  --text-color-failureLink: var(--grey-500);
+}
+
 body {
-  color: var(--black);
+  color: var(--text-color-body);
+  background-color: var(--background-color-body);
   padding: var(--sp-600);
 }
 
@@ -198,19 +243,19 @@ body {
 }
 
 .pass .summaryCount {
-  color: var(--green-500);
+  color: var(--text-color-summaryCount-pass);
 }
 
 .fail .summaryCount {
-  color: var(--red-500);
+  color: var(--text-color-summaryCount-fail);
 }
 
 .pass .summaryText {
-  color: var(--green-500);
+  color: var(--text-color-summaryText-pass);
 }
 
 .fail .summaryText {
-  color: var(--red-400);
+  color: var(--text-color-summaryText-fail);
 }
 
 .testCount {
@@ -220,43 +265,47 @@ body {
 }
 
 .pass .testCount {
-  color: var(--green-600);
+  color: var(--text-color-testCount-pass);
 }
 
 .fail .testCount {
-  color: var(--red-600);
+  color: var(--text-color-testCount-fail);
 }
 
 .result {
   font-size: var(--fs-200);
   margin: var(--sp-500) 0;
   padding: var(--sp-300) var(--sp-500);
-  border-left: var(--bw-100) solid var(--grey-400);
-  color: var(--grey-600);
+  border-left: var(--bw-100) solid var(--border-color-result);
+  color: var(--text-color-result);
 }
 
 .result:hover {
-  background-color: var(--grey-100);
+  background-color: var(--background-color-result-hover);
   border-color: transparent;
-  color: var(--black);
+  color: var(--text-color-result-hover);
   box-shadow: var(--bs-100);
 }
 
 .result:hover .diffCode {
-  background-color: var(--grey-200);
+  background-color: var(--background-color-diffCode-hover);
   box-shadow: var(--bs-inset-100);
 }
 
 .result:hover .diffCode.expected {
-  color: var(--green-500);
+  color: var(--text-color-diffCode-expected-hover);
 }
 
 .result:hover .diffCode.received {
-  color: var(--red-500);
+  color: var(--text-color-diffCode-received-hover);
 }
 
 .result:hover .failureLink {
-  color: var(--accent-400);
+  color: var(--text-color-failureLink-hover);
+}
+
+.result:hover .suiteName {
+  color: var(--text-color-suiteName-hover);
 }
 
 .suiteName {
@@ -277,7 +326,7 @@ body {
 .diffCode {
   display: inline-block;
   padding: var(--sp-400) var(--sp-500);
-  background: var(--grey-100);
+  background-color: var(--background-color-diffCode);
   white-space: pre;
   overflow: auto;
   max-width: calc(100% - var(--sp-400));
@@ -289,6 +338,6 @@ body {
 }
 
 .failureLink {
-  color: var(--grey-500);
+  color: var(--text-color-failureLink);
   cursor: pointer;
 }
