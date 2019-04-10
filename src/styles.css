@@ -7,6 +7,12 @@
   --rad-200: 2px;
   --rad-circle: 100%;
 
+  /* Box-Shadow */
+  --bs-100: 0 2px 4px 0 rgba(0,0,0,0.10);
+  --bs-200: 0 4px 8px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.08);
+  --bs-300: 0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08);
+  --bs-inset-100: inset 0 2px 4px 0 rgba(0,0,0,0.06);
+
   /* Border-Width */
   --bw-0: 0px;
   --bw-100: 1px;
@@ -173,12 +179,22 @@ body {
   justify-content: flex-start;
 }
 
+.resultSetContent {
+  margin-left: 79px;
+}
+
 .summary {
   font-size: var(--fs-700);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  justify-content: flex-start;
 }
 
 .summaryCount {
-  margin-right: var(--sp-200);
+  width: var(--sp-800);
+  text-align: right;
+  margin-right: var(--sp-300);
 }
 
 .pass .summaryCount {
@@ -213,20 +229,22 @@ body {
 
 .result {
   font-size: var(--fs-200);
-  margin: var(--sp-400) 0;
+  margin: var(--sp-500) 0;
   padding: var(--sp-300) var(--sp-500);
-  border-left: var(--bw-100) solid var(--grey-600);
+  border-left: var(--bw-100) solid var(--grey-400);
   color: var(--grey-600);
 }
 
 .result:hover {
   background-color: var(--grey-100);
-  border-color: var(--black);
+  border-color: transparent;
   color: var(--black);
+  box-shadow: var(--bs-100);
 }
 
 .result:hover .diffCode {
   background-color: var(--grey-200);
+  box-shadow: var(--bs-inset-100);
 }
 
 .result:hover .diffCode.expected {
