@@ -104,6 +104,11 @@
   --fw-extrabold: 800;
   --fw-black: 900;
 
+  /* Transition Timing */
+  --trans-100: 150ms ease-in-out;
+  --trans-200: 300ms ease-in-out;
+  --trans-300: 500ms ease-in-out;
+
   /* Z-Index */
   --z-neg: -1;
   --z-0: 0;
@@ -165,6 +170,10 @@ body.light {
   --text-color-suiteName-hover: inherit;
   --background-color-diffCode: var(--grey-100);
   --text-color-failureLink: var(--grey-500);
+  --background-color-button: var(--grey-300);
+  --text-color-button: var(--grey-600);
+  --background-color-button-hover: var(--grey-500);
+  --text-color-button-hover: var(--grey-100);
 }
 
 body.dark {
@@ -187,6 +196,10 @@ body.dark {
   --text-color-suiteName-hover: var(--grey-100);
   --background-color-diffCode: transparent;
   --text-color-failureLink: var(--grey-500);
+  --background-color-button: var(--grey-600);
+  --text-color-button: var(--grey-200);
+  --background-color-button-hover: var(--grey-400);
+  --text-color-button-hover: var(--grey-700);
 }
 
 body {
@@ -224,6 +237,10 @@ body {
   justify-content: flex-start;
 }
 
+.resultSetHeader.withButton {
+  justify-content: space-between;
+}
+
 .resultSetContent {
   margin-left: 79px;
 }
@@ -234,6 +251,23 @@ body {
   flex-flow: row nowrap;
   align-items: flex-end;
   justify-content: flex-start;
+}
+
+.button {
+  border: none;
+  border-radius: var(--rad-200);
+  background-color: var(--background-color-button);
+  color: var(--text-color-button);
+  font-size: var(--fs-200);
+  padding: var(--sp-300) var(--sp-400);
+  font-weight: var(--fw-medium);
+  box-shadow: var(--bs-100);
+}
+
+.button:hover, .button:focus {
+  cursor: pointer;
+  background-color: var(--background-color-button-hover);
+  color: var(--text-color-button-hover);
 }
 
 .summaryCount {
@@ -284,7 +318,7 @@ body {
   background-color: var(--background-color-result-hover);
   border-color: transparent;
   color: var(--text-color-result-hover);
-  box-shadow: var(--bs-100);
+  box-shadow: var(--bs-200);
 }
 
 .result:hover .diffCode {
@@ -340,4 +374,8 @@ body {
 .failureLink {
   color: var(--text-color-failureLink);
   cursor: pointer;
+}
+
+.color-transition {
+  transition: background-color var(--trans-100), color var(--trans-100);
 }
