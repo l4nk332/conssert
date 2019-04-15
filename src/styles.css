@@ -12,6 +12,7 @@
   --bs-200: 0 4px 8px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.08);
   --bs-300: 0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08);
   --bs-inset-100: inset 0 2px 4px 0 rgba(0,0,0,0.06);
+  --bs-outline-100: 0 0 0 3px rgba(52,144,220,0.5);
 
   /* Border-Width */
   --bw-0: 0px;
@@ -268,6 +269,11 @@ body {
   cursor: pointer;
   background-color: var(--background-color-button-hover);
   color: var(--text-color-button-hover);
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: var(--bs-outline-100);
 }
 
 .summaryCount {
