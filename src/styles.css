@@ -318,6 +318,7 @@ body {
   padding: var(--sp-300) var(--sp-500);
   border-left: var(--bw-100) solid var(--border-color-result);
   color: var(--text-color-result);
+  transition: box-shadow var(--trans-100), transform var(--trans-100);
 }
 
 .result:hover {
@@ -325,6 +326,7 @@ body {
   border-color: transparent;
   color: var(--text-color-result-hover);
   box-shadow: var(--bs-200);
+  transform: scale(1.02);
 }
 
 .result:hover .diffCode {
@@ -382,6 +384,6 @@ body {
   cursor: pointer;
 }
 
-.color-transition {
+.transitionColor {
   transition: background-color var(--trans-100), color var(--trans-100);
 }
