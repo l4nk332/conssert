@@ -387,3 +387,40 @@ body {
 .transitionColor {
   transition: background-color var(--trans-100), color var(--trans-100);
 }
+
+.switch {
+  display: block;
+  width: 32px;
+  height: 16px;
+  background-color: var(--background-color-button);
+  border-radius: var(--rad-200);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--bs-inset-100);
+}
+
+.switchShadowToggle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+}
+
+.switchToggle {
+  width: 16px;
+  height: 16px;
+  background: var(--text-color-button);
+  display: block;
+  position: absolute;
+  transition: transform var(--trans-100);
+}
+
+
+.switchShadowToggle:not(:checked) ~ .switchToggle {
+  transform: translateX(0);
+}
+
+.switchShadowToggle:checked ~ .switchToggle {
+  transform: translateX(calc(32px - 16px));
+}

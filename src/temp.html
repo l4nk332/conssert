@@ -8,7 +8,10 @@
 <body class='light transitionColor'>
   <section class="headlineContainer">
     <h1 class="brandText">🥁Conssert Testing Framework 🎸</h1>
-    <label for='colorMode'>Color Mode: <input type='checkbox' name='colorMode' id='colorMode' /></label>
+    <label class='switch' for='colorMode'>
+      <input id='colorMode' class='switchShadowToggle' type='checkbox' />
+      <span class="switchToggle"></span>
+    </label>
     <span class="runningTotal"><strong>0</strong> out of <strong>15</strong> Test Suites Ran</span>
   </section>
   <section class="resultsContainer">
@@ -77,15 +80,15 @@
     </section>
   </section>
 </body>
-<script>
-  document.querySelector('#colorMode').addEventListener('click', () => {
-    const modeSwap = (
-      document.body.classList.contains('light')
-        ? ['light', 'dark']
-        : ['dark', 'light']
-    )
+<!-- <script> -->
+<!--   document.querySelector('#colorMode').addEventListener('click', () => { -->
+<!--     const modeSwap = ( -->
+<!--       document.body.classList.contains('light') -->
+<!--         ? ['light', 'dark'] -->
+<!--         : ['dark', 'light'] -->
+<!--     ) -->
 
-    document.body.classList.replace(...modeSwap)
-  })
-</script>
+<!--     document.body.classList.replace(...modeSwap) -->
+<!--   }) -->
+<!-- </script> -->
 </html>
